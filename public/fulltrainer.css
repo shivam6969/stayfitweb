@@ -1,0 +1,104 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #171717;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.trainer-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.trainer-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.trainer-image-large {
+    flex: 1;
+    padding: 30px;
+    background-color: #ecf0f1;
+}
+
+.trainer-image-large img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.trainer-info {
+    flex: 2;
+    padding: 30px;
+}
+
+.trainer-info h2 {
+    font-size: 2.2em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.trainer-info p {
+    font-size: 1.1em;
+    color: #34495e;
+    line-height: 1.6;
+}
+
+.trainer-speciality {
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+
+.trainer-social-links {
+    margin-top: 20px;
+}
+
+.trainer-social-links a {
+    font-size: 1.5em;
+    margin-right: 15px;
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.trainer-social-links a:hover {
+    color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .trainer-content {
+        flex-direction: column;
+    }
+
+    .trainer-image-large, .trainer-info {
+        width: 100%;
+    }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayFit - Login/Signup</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <!-- Login Form -->
+            <div class="form-section" id="login-section">
+                <h2>Welcome Back!</h2>
+                <p>Login to access your fitness journey</p>
+                
+                <form id="login-form" class="form">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="login-email" required>
+                        <label>Email</label>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-password" required>
+                        <label>Password</label>
+                        <i class="fas fa-eye-slash password-toggle"></i>
+                    </div>
+
+                    <div class="form-extras">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="remember-me">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Login</button>
+                    <p class="switch-text">Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+                </form>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="form-section hidden" id="signup-section">
+                <h2>Create Account</h2>
+                <p>Start your fitness journey today</p>
+                
+                <form id="signup-form" class="form">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signup-name" required>
+                        <label>Full Name</label>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signup-email" required>
+                        <label>Email</label>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="signup-phone" required>
+                        <label>Phone Number</label>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signup-password" required>
+                        <label>Password</label>
+                        <i class="fas fa-eye-slash password-toggle"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signup-confirm-password" required>
+                        <label>Confirm Password</label>
+                        <i class="fas fa-eye-slash password-toggle"></i>
+                    </div>
+
+                    <label class="checkbox-container terms">
+                        <input type="checkbox" id="terms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
+
+                    <button type="submit" class="submit-btn">Sign Up</button>
+                    <p class="switch-text">Already have an account? <a href="#" id="show-login">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="loginscript.js"></script>
+</body>
+</html>

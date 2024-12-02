@@ -1,0 +1,142 @@
+/* General styles */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+
+/* Header */
+.header {
+	background-color: #171717;
+	color: white;
+	text-align: center;
+	padding: 20px;
+}
+
+/* Footer */
+.footer {
+	background-color: #2c3e50;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+
+/* Blog list container */
+.blog-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 20px;
+	justify-content: center;
+}
+
+/* Blog card styles */
+.blog-card {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 300px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+	transform: translateY(-5px);
+}
+
+.blog-image img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+.blog-content {
+	padding: 15px;
+}
+
+.blog-content h2 {
+	font-size: 1.5rem;
+	color: #2c3e50;
+	margin-bottom: 10px;
+}
+
+.blog-meta {
+	font-size: 0.9rem;
+	color: #7f8c8d;
+	margin-bottom: 10px;
+}
+
+.blog-description {
+	font-size: 1rem;
+	color: #34495e;
+	line-height: 1.6;
+	margin-bottom: 10px;
+}
+
+.read-more {
+	display: inline-block;
+	background-color: #2980b9;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+	background-color: #1abc9c;
+}
+
+.blog-actions {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.like-button {
+	background-color: #e74c3c;
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+}
+
+.like-button:hover {
+	background-color: #c0392b;
+}
+
+.like-count {
+	font-weight: bold;
+}
+
+.delete-button {
+	background-color: #e67e22; /* Orange color for distinction */
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+	margin-left: 10px; /* Add space between like and delete buttons */
+}
+
+.delete-button:hover {
+	background-color: #d35400; /* Darker shade on hover */
+}
+
+
+@media (max-width: 768px) {
+	.blog-card {
+		width: 100%;
+	}
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join StayFit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 0; 
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-head {
+            background-color: #56fa20; 
+            color: #fff; 
+            padding: 20px;
+            border-radius: 8px 8px 0 0; 
+            margin: 0; 
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0 0 10px; 
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        form {
+            text-align: left;
+            padding: 40px;
+        }
+
+        form label {
+            display: block;
+            font-size: 1em;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="tel"],
+        form input[type="date"],
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        form input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #56fa20;
+            color: #fff;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: transparent;
+            color: #56fa20;
+            border: 1px solid #56fa20;
+        }
+
+        .form-footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="card-head">
+            <h1>Join StayFit</h1>
+            <p>Fill in your details to get started on your fitness journey!</p>
+        </header>
+
+        <form id="stayfit-form">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Ex-Prashant" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="8689899090" required>
+
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="membership">Choose Membership Plan</label>
+            <select id="membership" name="membership">
+                <option value="basic">Silver</option>
+                <option value="standard">Gold</option>
+                <option value="premium">Platinum</option>
+            </select>
+
+            <input type="submit" value="Register Now">
+        </form>
+
+        <div class="form-footer">
+            <p>Have questions? <a href="#">Contact us</a>.</p>
+        </div>
+    </div>
+
+    <div>
+        
+    </div>
+
+    <script>
+        // Base Class for Form Elements
+        class FormElement {
+            constructor(id) {
+                this.element = document.getElementById(id);
+            }
+
+            getValue() {
+                return this.element.value;
+            }
+
+            setValue(value) {
+                this.element.value = value;
+            }
+
+            validate() {
+                return this.element.checkValidity();
+            }
+        }
+
+        // Specialized Classes
+        class InputField extends FormElement {
+            constructor(id) {
+                super(id);
+            }
+        }
+
+        class SelectField extends FormElement {
+            constructor(id) {
+                super(id);
+            }
+
+            getSelectedOption() {
+                return this.element.options[this.element.selectedIndex].text;
+            }
+        }
+
+        class FormHandler {
+            constructor(formId) {
+                this.form = document.getElementById(formId);
+                this.fullName = new InputField('full-name');
+                this.email = new InputField('email');
+                this.phone = new InputField('phone');
+                this.dob = new InputField('dob');
+                this.membership = new SelectField('membership');
+
+                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+            }
+
+            handleSubmit(event) {
+                event.preventDefault(); // Prevent form from submitting traditionally
+
+                if (this.validateForm()) {
+                    this.showSuccessMessage();
+                    this.submitData();
+                } else {
+                    alert("Please fill all fields correctly!");
+                }
+            }
+
+            validateForm() {
+                return (
+                    this.fullName.validate() &&
+                    this.email.validate() &&
+                    this.phone.validate() &&
+                    this.dob.validate() &&
+                    this.membership.validate()
+                );
+            }
+
+            showSuccessMessage() {
+                alert("Thank you for registering, " + this.fullName.getValue() + "!");
+            }
+
+            submitData() {
+                const data = {
+                    fullName: this.fullName.getValue(),
+                    email: this.email.getValue(),
+                    phone: this.phone.getValue(),
+                    dob: this.dob.getValue(),
+                    membership: this.membership.getSelectedOption(),
+                };
+
+                fetch('/memberjoin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Registration successful!");
+                        console.log("Form successfully submitted:", data);
+                    } else {
+                        alert("Error submitting the form.");
+                        console.error("Error:", response.statusText);
+                    }
+                })
+                .catch(error => {
+                    alert("Network error. Please try again.");
+                    console.error("Network error:", error);
+                });
+            }
+
+        }
+
+        
+        const stayFitFormHandler = new FormHandler('stayfit-form');
+    </script>
+</body>
+</html>
